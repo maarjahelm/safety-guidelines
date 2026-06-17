@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Workplace Safety Guidelines</title>
+<style>
+/* ============================================================================
+   Kalep Design System — colors + type
+   Source: kalep-tailwind/token-css (default Bolt theme, light + dark).
+   Architecture: global primitives → semantic tokens → semantic roles.
+   Primary brand color: Bolt green (#2A9C64).
+   ============================================================================ */
+
+/* ---------- Fonts ---------- */
+
+
+
+/* ---------- Primitive (core) color tokens ---------- */
+:where(:root) {
+  --color-core-white: #ffffff;
+  --color-core-black: #000000;
+  --color-core-brand-green: #2A9C64;
+  --color-core-brand-green-dark: #0C2C1C;
+
+  /* Green scale on light (1..12) — brand */
+  --color-core-green-1: rgba(251, 254, 252, 1);
+  --color-core-green-3: rgba(231, 246, 237, 1);
+  --color-core-green-5: rgba(200, 231, 212, 1);
+  --color-core-green-7: rgba(152, 203, 172, 1);
+  --color-core-green-9: rgba(43, 134, 89, 1);
+  --color-core-green-10: rgba(24, 120, 76, 1);
+  --color-core-green-11: rgba(20, 123, 81, 1);
+  --color-core-green-12: rgba(8, 31, 20, 1);
+
+  /* Red (danger) */
+  --color-core-red-3: rgba(255, 234, 234, 1);
+  --color-core-red-5: rgba(255, 205, 205, 1);
+  --color-core-red-9: rgba(222, 25, 41, 1);
+  --color-core-red-10: rgba(206, 0, 25, 1);
+  --color-core-red-11: rgba(178, 15, 28, 1);
+
+  /* Yellow (warning) */
+  --color-core-yellow-3: rgba(255, 240, 197, 1);
+  --color-core-yellow-5: rgba(255, 219, 144, 1);
+  --color-core-yellow-9: rgba(255, 178, 0, 1);
+  --color-core-yellow-10: rgba(255, 161, 0, 1);
+
+  /* Purple (promo / map-driving) */
+  --color-core-purple-3: rgba(238, 242, 255, 1);
+  --color-core-purple-9: rgba(89, 102, 243, 1);
+  --color-core-purple-10: rgba(79, 91, 218, 1);
+  --color-core-purple-11: rgba(68, 19, 217, 1);
+
+  /* Sage (neutrals) */
+  --color-core-sage-1: rgba(251, 253, 252, 1);
+  --color-core-sage-3: rgba(238, 241, 240, 1);
+  --color-core-sage-5: rgba(222, 226, 225, 1);
+  --color-core-sage-7: rgba(203, 207, 206, 1);
+  --color-core-sage-9: rgba(134, 142, 139, 1);
+  --color-core-sage-11: rgba(95, 101, 99, 1);
+  --color-core-sage-12: rgba(25, 31, 28, 1);
+
+  /* Black alpha scale */
+  --color-core-black-alpha-3: rgba(0, 0, 0, 0.06);
+  --color-core-black-alpha-5: rgba(0, 0, 0, 0.12);
+  --color-core-black-alpha-9: rgba(0, 0, 0, 0.45);
+  --color-core-black-alpha-12: rgba(0, 0, 0, 0.88);
+}
+
+/* ---------- Semantic tokens — light (Rider/default) ---------- */
+:where(:root, [data-mode="light"]) {
+  /* Layers */
+  --color-layer-floor-0: #ffffff;
+  --color-layer-floor-0-grouped: rgba(238, 241, 240, 1);
+  --color-layer-floor-1: #ffffff;
+  --color-layer-floor-2: #ffffff;
+  --color-layer-floor-3: #ffffff;
+  --color-layer-surface: rgba(0, 45, 30, 0.07);
+
+  /* Content */
+  --color-content-primary: rgba(25, 31, 28, 1);
+  --color-content-secondary: rgba(0, 10, 7, 0.63);
+  --color-content-tertiary: rgba(0, 17, 11, 0.47);
+  --color-content-action-primary: rgba(0, 112, 66, 0.92);
+  --color-content-action-secondary: rgba(0, 110, 55, 0.83);
+  --color-content-danger-primary: rgba(173, 0, 14, 0.94);
+  --color-content-warning-primary: rgba(158, 91, 0, 1);
+  --color-content-positive-primary: rgba(0, 112, 66, 0.92);
+  --color-content-promo-primary: rgba(56, 4, 215, 0.94);
+  --color-content-link-primary: rgba(0, 112, 66, 0.92);
+  --color-content-primary-inverted: rgba(253, 255, 254, 0.93);
+
+  /* Backgrounds */
+  --color-bg-neutral-primary: rgba(14, 16, 16, 1);
+  --color-bg-neutral-secondary: rgba(0, 45, 30, 0.07);
+  --color-bg-action-primary: rgba(43, 134, 89, 1);
+  --color-bg-action-secondary: rgba(0, 160, 64, 0.09);
+  --color-bg-danger-primary: rgba(222, 25, 41, 1);
+  --color-bg-danger-secondary: rgba(255, 0, 0, 0.08);
+  --color-bg-warning-primary: rgba(255, 178, 0, 1);
+  --color-bg-warning-secondary: rgba(255, 190, 0, 0.23);
+  --color-bg-positive-primary: rgba(43, 134, 89, 1);
+  --color-bg-promo-primary: rgba(89, 102, 243, 1);
+  --color-bg-promo-secondary: rgba(0, 60, 255, 0.07);
+
+  /* Active (pressed) */
+  --color-bg-active-action-primary: rgba(24, 120, 76, 1);
+  --color-bg-active-neutral-secondary: rgba(0, 31, 24, 0.13);
+
+  /* Borders */
+  --color-border-neutral-primary: rgba(0, 17, 11, 0.47);
+  --color-border-neutral-secondary: rgba(0, 20, 13, 0.16);
+  --color-border-separator: rgba(0, 45, 30, 0.07);
+  --color-border-action-primary: rgba(43, 134, 89, 1);
+
+  /* Special */
+  --color-special-scrim: rgba(0, 0, 0, 0.28);
+  --color-special-brand: #2A9C64;
+  --color-special-brand-alt: #0C2C1C;
+  --color-special-bg-disabled: rgba(0, 45, 30, 0.07);
+}
+
+/* ---------- Semantic tokens — dark ---------- */
+:where([data-mode="dark"]) {
+  --color-layer-floor-0: #000000;
+  --color-layer-floor-0-grouped: #000000;
+  --color-layer-floor-1: rgba(14, 16, 16, 1);
+  --color-layer-floor-2: rgba(22, 26, 24, 1);
+  --color-layer-floor-3: rgba(32, 34, 33, 1);
+  --color-layer-surface: rgba(244, 246, 233, 0.08);
+
+  --color-content-primary: rgba(236, 238, 237, 1);
+  --color-content-secondary: rgba(244, 254, 249, 0.69);
+  --color-content-tertiary: rgba(229, 253, 245, 0.46);
+  --color-content-action-primary: rgba(119, 248, 176, 0.96);
+  --color-content-danger-primary: rgba(255, 159, 148, 1);
+  --color-content-warning-primary: rgba(255, 191, 53, 1);
+  --color-content-positive-primary: rgba(119, 248, 176, 0.96);
+  --color-content-promo-primary: rgba(178, 183, 255, 0.98);
+  --color-content-link-primary: rgba(119, 248, 176, 0.96);
+  --color-content-primary-inverted: rgba(25, 31, 28, 1);
+
+  --color-bg-neutral-primary: rgba(251, 253, 252, 1);
+  --color-bg-neutral-secondary: rgba(244, 246, 233, 0.08);
+  --color-bg-action-primary: rgba(43, 134, 89, 1);
+  --color-bg-action-secondary: rgba(0, 255, 110, 0.12);
+  --color-bg-danger-primary: rgba(222, 25, 41, 1);
+  --color-bg-danger-secondary: rgba(254, 11, 6, 0.2);
+  --color-bg-warning-primary: rgba(255, 178, 0, 1);
+  --color-bg-warning-secondary: rgba(255, 133, 0, 0.14);
+  --color-bg-positive-primary: rgba(43, 134, 89, 1);
+  --color-bg-promo-primary: rgba(89, 102, 243, 1);
+  --color-bg-promo-secondary: rgba(64, 81, 252, 0.26);
+
+  --color-bg-active-action-primary: rgba(24, 120, 76, 1);
+  --color-bg-active-neutral-secondary: rgba(241, 250, 243, 0.14);
+
+  --color-border-neutral-primary: rgba(225, 253, 241, 0.4);
+  --color-border-neutral-secondary: rgba(242, 255, 244, 0.18);
+  --color-border-separator: rgba(244, 246, 233, 0.08);
+  --color-border-action-primary: rgba(43, 134, 89, 1);
+
+  --color-special-scrim: rgba(0, 0, 0, 0.48);
+  --color-special-brand: #2A9C64;
+  --color-special-brand-alt: #0C2C1C;
+  --color-special-bg-disabled: rgba(244, 246, 233, 0.08);
+}
+
+/* ---------- Dimensions / spacing / radii ---------- */
+:root {
+  --dimension-50: 0.125rem;
+  --dimension-100: 0.25rem;
+  --dimension-150: 0.375rem;
+  --dimension-200: 0.5rem;
+  --dimension-300: 0.75rem;
+  --dimension-400: 1rem;
+  --dimension-500: 1.25rem;
+  --dimension-600: 1.5rem;
+  --dimension-800: 2rem;
+  --dimension-1000: 2.5rem;
+  --dimension-1200: 3rem;
+  --dimension-1600: 4rem;
+
+  --corner-radius-xs: 0.25rem;
+  --corner-radius-s: 0.5rem;
+  --corner-radius-m: 0.75rem;
+  --corner-radius-l: 1rem;
+  --corner-radius-xl: 1.5rem;
+  --corner-radius-full: 600rem;
+
+  --size-icon-xs: 1rem;
+  --size-icon-s: 1.25rem;
+  --size-icon-m: 1.5rem;
+  --size-icon-l: 2rem;
+
+  --size-comp-s-min-height: 2.25rem;
+  --size-comp-m-min-height: 3rem;
+  --size-comp-l-min-height: 3.5rem;
+
+  --layout-hr-screen-margin: 1.5rem;
+  --layout-between-sections: 0.5rem;
+
+  /* Shadows — Kalep uses very subtle shadows; most surfaces rely on layers */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --shadow-floating: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-bottom-sheet: 0 -4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Type scale (utility classes, Inter variable) ----------
+   "accent" = semibold-ish (weight 650), "regular" = 450.
+   Kalep uses variable opsz matching the pt size + feature settings cv03, cv04. */
+.bolt-font-base {
+  font-family: "InterVariable", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-feature-settings: "cv03", "cv04", "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+}
+.bolt-font-display-m-regular { font: 450 3rem/3.75rem "InterVariable", sans-serif; letter-spacing: -0.022em; font-variation-settings: "opsz" 32; font-feature-settings: "cv03","cv04"; }
+.bolt-font-heading-l-accent  { font: 650 2rem/2.5rem   "InterVariable", sans-serif; letter-spacing: -0.022em; font-variation-settings: "opsz" 32; font-feature-settings: "cv03","cv04"; }
+.bolt-font-heading-m-accent  { font: 650 1.75rem/2.25rem "InterVariable", sans-serif; letter-spacing: -0.02em;  font-variation-settings: "opsz" 28; font-feature-settings: "cv03","cv04"; }
+.bolt-font-heading-s-accent  { font: 650 1.5rem/1.875rem "InterVariable", sans-serif; letter-spacing: -0.019em; font-variation-settings: "opsz" 24; font-feature-settings: "cv03","cv04"; }
+.bolt-font-heading-xs-accent { font: 650 1.25rem/1.5625rem "InterVariable", sans-serif; letter-spacing: -0.017em; font-variation-settings: "opsz" 20; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-l-regular    { font: 450 1.125rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.014em; font-variation-settings: "opsz" 18; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-l-accent     { font: 650 1.125rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.014em; font-variation-settings: "opsz" 18; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-m-regular    { font: 450 1rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.011em; font-variation-settings: "opsz" 16; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-m-accent     { font: 650 1rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.011em; font-variation-settings: "opsz" 16; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-s-regular    { font: 450 0.875rem/1.25rem "InterVariable", sans-serif; letter-spacing: -0.006em; font-variation-settings: "opsz" 14; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-s-accent     { font: 650 0.875rem/1.25rem "InterVariable", sans-serif; letter-spacing: -0.006em; font-variation-settings: "opsz" 14; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-xs-regular   { font: 450 0.75rem/1rem "InterVariable", sans-serif; letter-spacing: 0em; font-variation-settings: "opsz" 14; font-feature-settings: "cv03","cv04"; }
+.bolt-font-body-xs-accent    { font: 650 0.75rem/1rem "InterVariable", sans-serif; letter-spacing: 0em; font-variation-settings: "opsz" 14; font-feature-settings: "cv03","cv04"; }
+.bolt-font-caps-m-accent     { font: 650 0.875rem/1.125rem "InterVariable", sans-serif; letter-spacing: 0.074em; text-transform: uppercase; font-variation-settings: "opsz" 14; }
+.bolt-font-caps-s-accent     { font: 650 0.6875rem/0.875rem "InterVariable", sans-serif; letter-spacing: 0.08em;  text-transform: uppercase; font-variation-settings: "opsz" 14; }
+.bolt-font-tabular-m-regular { font: 450 1rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.026em; font-feature-settings: "tnum","cv03","cv04"; font-variation-settings: "opsz" 16; }
+.bolt-font-tabular-m-accent  { font: 650 1rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.026em; font-feature-settings: "tnum","cv03","cv04"; font-variation-settings: "opsz" 16; }
+
+/* ---------- Semantic HTML defaults ---------- */
+html, body { background: var(--color-layer-floor-0); color: var(--color-content-primary); }
+body {
+  font-family: "InterVariable", Inter, system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv03", "cv04", "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+h1 { font: 650 2rem/2.5rem "InterVariable", sans-serif; letter-spacing: -0.022em; margin: 0; }
+h2 { font: 650 1.75rem/2.25rem "InterVariable", sans-serif; letter-spacing: -0.02em; margin: 0; }
+h3 { font: 650 1.5rem/1.875rem "InterVariable", sans-serif; letter-spacing: -0.019em; margin: 0; }
+h4 { font: 650 1.25rem/1.5625rem "InterVariable", sans-serif; letter-spacing: -0.017em; margin: 0; }
+p  { font: 450 1rem/1.5rem "InterVariable", sans-serif; letter-spacing: -0.011em; margin: 0; }
+small { font: 450 0.875rem/1.25rem "InterVariable", sans-serif; letter-spacing: -0.006em; }
+a  { color: var(--color-content-link-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, kbd, pre { font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace; font-size: 0.875em; }
+
+/* Variation A styles */
+.docA-root {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: var(--color-layer-floor-0-grouped);
+  color: var(--color-content-primary);
+  overflow: hidden;
+}
+.docA-toc {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--color-layer-floor-0);
+  border-right: 1px solid var(--color-border-separator);
+  padding: 28px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.docA-toc-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+.docA-toc-brand-tag { font-size: 11px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-secondary); }
+.docA-toc-label { font-size: 11px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-tertiary); margin-bottom: 10px; padding-left: 8px; }
+.docA-toc-nav { display: flex; flex-direction: column; gap: 2px; }
+.docA-toc-item {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 10px 8px; border: none; background: transparent; cursor: pointer;
+  border-radius: 8px; text-align: left;
+  font: 450 14px/1.35 "InterVariable", sans-serif;
+  color: var(--color-content-secondary);
+  transition: background 0.12s, color 0.12s;
+}
+.docA-toc-item:hover { background: var(--color-bg-neutral-secondary); }
+.docA-toc-item.is-active { background: var(--color-bg-action-secondary); color: var(--color-content-action-primary); font-weight: 650; }
+.docA-toc-num { font-variant-numeric: tabular-nums; font-size: 11px; opacity: 0.6; min-width: 18px; font-weight: 650; }
+.docA-toc-t { flex: 1; }
+.docA-toc-foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--color-border-separator); }
+.docA-toc-meta { font-size: 12px; color: var(--color-content-tertiary); padding: 2px 8px; }
+
+.docA-scroll { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
+.docA-inner { max-width: 760px; margin: 0 auto; padding: 64px 72px 96px; }
+
+/* Cover */
+.docA-cover { margin-bottom: 72px; }
+.docA-eyebrow { font-size: 12px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-action-primary); margin-bottom: 20px; }
+.docA-title { font: 650 56px/58px "InterVariable", sans-serif; letter-spacing: -0.028em; margin: 0 0 28px; font-variation-settings: "opsz" 48; }
+.docA-lede { font: 450 18px/28px "InterVariable", sans-serif; color: var(--color-content-secondary); letter-spacing: -0.011em; max-width: 620px; margin: 0 0 36px; }
+.docA-cover-meta {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  padding: 20px 0; border-top: 1px solid var(--color-border-separator); border-bottom: 1px solid var(--color-border-separator);
+}
+.docA-meta-k { font-size: 11px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-tertiary); margin-bottom: 4px; }
+.docA-meta-v { font-size: 15px; font-weight: 650; color: var(--color-content-primary); }
+
+/* Section */
+.docA-section { margin-bottom: 56px; scroll-margin-top: 24px; }
+.docA-sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border-separator); }
+.docA-sec-num { font: 650 13px/1 "InterVariable", sans-serif; letter-spacing: 0.08em; color: var(--color-content-action-primary); font-variant-numeric: tabular-nums; min-width: 24px; }
+.docA-sec-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--color-bg-action-secondary);
+  color: var(--color-content-action-primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.docA-sec-title { font: 650 28px/32px "InterVariable", sans-serif; letter-spacing: -0.022em; margin: 0; flex: 1; }
+
+.docA-p { font: 450 16px/26px "InterVariable", sans-serif; color: var(--color-content-primary); margin: 0 0 16px; letter-spacing: -0.011em; }
+.docA-h { font: 650 16px/24px "InterVariable", sans-serif; color: var(--color-content-primary); margin: 24px 0 10px; }
+.docA-ul { list-style: none; margin: 0 0 16px; padding: 0; }
+.docA-ul li {
+  position: relative;
+  padding: 6px 0 6px 26px;
+  font: 450 15px/24px "InterVariable", sans-serif;
+  color: var(--color-content-secondary);
+  letter-spacing: -0.006em;
+}
+.docA-ul-tight li { padding: 4px 0 4px 22px; font-size: 14px; line-height: 22px; }
+.docA-bullet {
+  position: absolute; left: 10px; top: 14px;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--color-content-action-primary);
+}
+.docA-ul-tight .docA-bullet { left: 8px; top: 13px; }
+
+.docA-callout {
+  display: flex; gap: 14px;
+  background: var(--color-bg-action-secondary);
+  border-radius: var(--corner-radius-l);
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+.docA-callout-icon { color: var(--color-content-action-primary); flex-shrink: 0; }
+.docA-callout-title { font: 650 16px/22px "InterVariable", sans-serif; color: var(--color-content-action-primary); margin-bottom: 4px; }
+.docA-callout-body { font: 450 14px/20px "InterVariable", sans-serif; color: var(--color-content-primary); }
+
+/* QR block */
+.docA-qr {
+  display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center;
+  background: var(--color-layer-floor-1);
+  border: 1px solid var(--color-border-separator);
+  border-radius: var(--corner-radius-l);
+  padding: 18px 20px;
+  margin: 16px 0 24px;
+}
+.docA-qr-img {
+  width: 120px; height: 120px;
+  background: #fff;
+  border-radius: var(--corner-radius-m);
+  padding: 8px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--color-border-separator);
+}
+.docA-qr-img img { display: block; width: 100%; height: 100%; }
+.docA-qr-label { font: 650 12px/1 "InterVariable", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-action-primary); margin-bottom: 8px; }
+.docA-qr-caption { font: 450 14px/20px "InterVariable", sans-serif; color: var(--color-content-primary); margin-bottom: 8px; }
+.docA-qr-link {
+  font: 450 12px/16px "InterVariable", sans-serif;
+  color: var(--color-content-secondary);
+  word-break: break-all;
+  text-decoration: none;
+}
+.docA-qr-link:hover { color: var(--color-content-action-primary); text-decoration: underline; }
+
+/* Three-stage cards */
+.docA-stages { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 24px; }
+.docA-stage {
+  display: grid; grid-template-columns: 160px 1fr; gap: 20px;
+  background: var(--color-layer-floor-1);
+  border: 1px solid var(--color-border-separator);
+  border-left: 3px solid var(--color-content-action-primary);
+  border-radius: var(--corner-radius-m);
+  padding: 18px 20px;
+}
+.docA-stage-head { padding-top: 2px; }
+.docA-stage-num { display: block; font: 650 11px/1 "InterVariable", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-action-primary); margin-bottom: 5px; }
+.docA-stage-when { font: 650 19px/24px "InterVariable", sans-serif; letter-spacing: -0.014em; }
+.docA-stage-lead { font: 450 14px/20px "InterVariable", sans-serif; color: var(--color-content-secondary); margin-bottom: 4px; }
+.docA-stage .docA-ul { margin-bottom: 0; }
+
+/* GHS pictogram grid */
+.docA-ghs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0 24px; }
+.docA-ghs-item {
+  text-align: center;
+  background: var(--color-layer-floor-1);
+  border: 1px solid var(--color-border-separator);
+  border-radius: var(--corner-radius-m);
+  padding: 18px 14px 16px;
+}
+.docA-ghs-pic { display: block; width: 72px; height: 72px; margin: 0 auto 12px; }
+.docA-ghs-code { font: 650 11px/1 "InterVariable", sans-serif; letter-spacing: 0.06em; color: var(--color-content-tertiary); margin-bottom: 4px; }
+.docA-ghs-name { font: 650 14px/18px "InterVariable", sans-serif; margin-bottom: 4px; }
+.docA-ghs-desc { font: 450 12px/16px "InterVariable", sans-serif; color: var(--color-content-secondary); }
+
+/* Hazards grid */
+.docA-hazards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0 24px; }
+.docA-hazard { background: var(--color-layer-floor-1); border-radius: var(--corner-radius-l); padding: 16px 18px; border: 1px solid var(--color-border-separator); }
+.docA-hazard-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.docA-hazard-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--color-bg-warning-secondary);
+  color: var(--color-content-warning-primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.docA-hazard-title { font: 650 14px/20px "InterVariable", sans-serif; }
+
+/* Footer */
+.docA-foot { margin-top: 72px; }
+.docA-foot-rule { height: 1px; background: var(--color-border-neutral-secondary); margin-bottom: 24px; }
+.docA-foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.docA-foot-label { font-size: 11px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-content-tertiary); margin-bottom: 6px; }
+.docA-foot-body { font: 450 14px/20px "InterVariable", sans-serif; color: var(--color-content-secondary); }
+.docA-sign-line { height: 2px; background: var(--color-content-primary); margin-bottom: 8px; width: 100%; }
+
+/* Scrollbar restraint */
+.docA-scroll::-webkit-scrollbar, .docA-toc::-webkit-scrollbar { width: 10px; }
+.docA-scroll::-webkit-scrollbar-thumb, .docA-toc::-webkit-scrollbar-thumb { background: rgba(0,0,0,.12); border-radius: 5px; }
+
+html, body, #root { height: 100%; margin: 0; }
+body { background: #fbfdfc; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script>// English translation of "Sissejuhatav ohutusjuhendamine" (Introductory Safety Briefing).
+// Faithful translation — structure, legal references, and hierarchy preserved.
+window.SAFETY_CONTENT = {
+  title: "Workplace Safety Guidelines",
+  subtitle: "Introductory Safety Briefing",
+  intro: "Occupational safety in the Republic of Estonia is regulated by the Occupational Health and Safety Act. The primary legal instruments are the Occupational Health and Safety Act and its annexes, other laws addressing occupational health and safety, regulatory acts, rules, and agreements.",
+  sections: [
+    {
+      id: "organisation",
+      num: "01",
+      title: "Organisation of the Working Environment",
+      icon: "Settings",
+      blocks: [
+        { kind: "p", text: "The working environment specialist is a competent specialist in the working environment whom the employer has authorised to perform occupational health and safety tasks." },
+        { kind: "h", text: "Duties of the working environment specialist:" },
+        { kind: "ul", items: [
+          "Know the legal acts regulating occupational health and safety and the working conditions of the company, monitor and control them, and take measures to reduce the effect of hazards in the working environment.",
+          "Temporarily stop work in a hazardous section or prohibit the use of a dangerous work tool when there is an immediate threat to the life or health of an employee and the hazard cannot be eliminated by other means.",
+          "Cooperate with employees, the working environment representative, the working environment council, and the occupational health service provider to create a safe working environment and maintain the working capacity of employees."
+        ]},
+        { kind: "p", text: "First-aid provider: an employee who has completed a 16-hour training course and, in the event of an accident, provides first aid to the victim in order to save their life." },
+        { kind: "p", text: "The working environment representative is elected by the work collective. A representative is elected for every department with at least 10 employees." },
+        { kind: "h", text: "Duties of the working environment representative:" },
+        { kind: "ul", items: [
+          "Regularly monitor compliance with occupational safety rules and instructions by both the employer and the employees.",
+          "Ensure that occupational health and safety measures are implemented at the workplace and that employees are equipped with working personal protective equipment.",
+          "Notify employees, the employer, or their representative immediately of any hazardous situation or deficiency detected in the working environment, and require the employer to eliminate the deficiency as quickly as possible.",
+          "Know the instructions and legal acts that are mandatory for employees.",
+          "Ensure that employees receive the necessary knowledge, instruction, and training in the field of occupational health and safety."
+        ]}
+      ]
+    },
+    {
+      id: "employer-duties",
+      num: "02",
+      title: "Principal Duties of the Employer",
+      icon: "User",
+      blocks: [
+        { kind: "p", text: "The employer, the working environment specialist, and the head of a structural unit are guided in their work by the following principal duties:" },
+        { kind: "ul", items: [
+          "Ensure safe and healthy working conditions in accordance with occupational safety legislation; in its absence, take measures to ensure safety and provide access to occupational safety legal acts.",
+          "Explain to the employee the potential hazards and harmful effects of their work, organise verification of occupational safety knowledge, and provide additional training where necessary.",
+          "Provide the employee with the prescribed protective clothing, footwear, and other personal protective equipment.",
+          "Not assign an employee to work for which they have not been trained.",
+          "Require the employee to comply with occupational safety legislation.",
+          "Organise work in a way that prevents occupational accidents and health damage.",
+          "Organise the provision of occupational health services and cover the associated costs.",
+          "Ensure the availability of first-aid supplies at workplaces and a room where, when necessary, first aid can be given and the victim held until medical help arrives.",
+          "Display instructional materials on first-aid methods (posters, brochures, and other visual materials) in visible locations.",
+          "Designate a person responsible for the upkeep of first-aid supplies.",
+          "Explain to the employee how to act in the event of an occupational accident, which aids to use, where they can be obtained, and whom and where to contact for first aid.",
+          "In the event of an occupational accident or an employee's illness, ensure the availability of first-aid supplies, the provision of first aid on site by a trained employee, and operational communication with a healthcare institution or the employee's home (as directed by a physician)."
+        ]}
+      ]
+    },
+    {
+      id: "employee-duties",
+      num: "03",
+      title: "Duties of the Employee",
+      icon: "Check",
+      blocks: [
+        { kind: "h", text: "The employee's duties are to:" },
+        { kind: "ul", items: [
+          "Comply with the occupational safety requirements established by the company.",
+          "Perform work tasks in a timely and high-quality manner and carry out the agreed work.",
+          "Follow lawful instructions from the employer, their representative, and persons carrying out occupational safety supervision.",
+          "Observe the working- and rest-time arrangements established by the employer.",
+          "Use personal protective equipment to prevent accidents and health damage.",
+          "Attend medical examinations in accordance with the company's health-check procedure.",
+          "Comply with the occupational safety requirements laid down for occupational safety, food hygiene, and fire safety.",
+          "Use the prescribed personal protective equipment and keep it in working order.",
+          "Ensure, in accordance with training received and instructions given by the employer, that their work does not endanger their own life and health or that of others and does not pollute the environment.",
+          "Keep the company's property, equipment, and the workplace orderly and clean, and use the amenity rooms provided by the employer in accordance with their intended purpose.",
+          "Immediately report any accident, threat of an accident, occupational accident, or any health disturbance that prevents the performance of work duties to their direct supervisor or temporary substitute.",
+          "Not work under the influence of alcohol, narcotics, toxic substances, or significant influence of psychotropic substances (prohibited)."
+        ]}
+      ]
+    },
+    {
+      id: "environment",
+      num: "04",
+      title: "General Requirements for the Working Environment",
+      icon: "Home",
+      blocks: [
+        { kind: "h", text: "Requirements for the working environment:" },
+        { kind: "ul", items: [
+          "The working environment must be arranged so that work is safe and does not harm the health of the employee or others, or the environment.",
+          "Different works and operations must be scheduled and sequenced so that their combined effect is safe.",
+          "Harmful and hazardous factors in the working environment must not exceed applicable norms. In exceptional cases, where the nature of the work does not allow compliance, personal protective equipment must be used.",
+          "The employee must be able to reach the workplace safely."
+        ]},
+        { kind: "h", text: "Escape routes and exits:" },
+        { kind: "ul", items: [
+          "Escape routes and the passageways leading to them must be free of any obstacles and must allow direct exit to a safe area.",
+          "In case of danger, employees must be able to leave all workstations quickly and safely."
+        ]},
+        { kind: "h", text: "Ventilation:" },
+        { kind: "ul", items: [
+          "A sufficient supply of fresh air must be provided to the employee at the workstation, according to the working methods used and physical workload.",
+          "Draughts that could harm the employee's health must be avoided.",
+          "Any sediment or contamination that could endanger the employee's health when inhaled must be removed immediately."
+        ]}
+      ]
+    },
+    {
+      id: "equipment",
+      num: "05",
+      title: "Electric Vehicle Safety",
+      icon: "Electric",
+      blocks: [
+        { kind: "p", text: "The vehicles used for work are electric. They carry specific hazards because of their high-voltage systems, large traction batteries, and near-silent operation. Always follow the manufacturer's manual and the rules below. If you are unsure about anything, ask the fleet manager before driving or charging." }
+      ],
+      hazards: [
+        {
+          id: "ev-hv", icon: "Electric", title: "High-voltage system",
+          items: [
+            "The traction battery and the orange-sheathed cables carry lethal voltage. Never open, cut, or tamper with orange cabling or high-voltage components.",
+            "Only trained and authorised technicians may work on the high-voltage system.",
+            "If you see damage to orange cables or the battery housing, take the vehicle out of service and report it immediately.",
+            "After a collision, treat the vehicle as live — do not touch exposed components and keep bystanders away."
+          ]
+        },
+        {
+          id: "ev-charging", icon: "Plus", title: "Charging",
+          items: [
+            "Inspect the cable, plug, and charging port for damage, dirt, or moisture before every charge. Do not use a damaged cable or connector.",
+            "Connect the cable to the vehicle first, then to the charger; reverse the order when disconnecting.",
+            "Use only equipment approved for EV charging — no household extension leads or unapproved adapters.",
+            "Route the cable so it does not lie across walkways and become a trip hazard; charge in a ventilated area.",
+            "If the cable or connector gets hot, you smell burning, or you see smoke, stop charging immediately, disconnect if safe to do so, move away, and call 112."
+          ]
+        },
+        {
+          id: "ev-fire", icon: "Alert", title: "Battery and fire",
+          items: [
+            "A damaged or overheating battery can release toxic gases and catch fire; an EV battery fire can reignite hours later.",
+            "Do not attempt to fight a battery fire yourself — evacuate, keep others well away, and call 112, stating clearly that it is an electric vehicle.",
+            "Report any battery warning light, swelling, leaking, or unusual smell and stop driving."
+          ]
+        },
+        {
+          id: "ev-silent", icon: "Dot", title: "Silent operation",
+          items: [
+            "EVs are almost silent at low speed — pedestrians, cyclists, and other road users may not hear you. Drive slowly and watch carefully in car parks, near crossings, and at pick-up points.",
+            "Use the acoustic vehicle alert system (AVAS) where fitted and never disable it."
+          ]
+        },
+        {
+          id: "ev-regen", icon: "ArrowRight", title: "Regenerative braking & range",
+          items: [
+            "Regenerative braking changes how the car slows when you lift off the accelerator — adjust your following distance and braking accordingly.",
+            "Plan charging stops so you do not run out of charge in traffic; a stranded vehicle in a live lane is a serious hazard."
+          ]
+        },
+        {
+          id: "ev-towing", icon: "Stop", title: "Parking, towing & recovery",
+          items: [
+            "EVs are heavy — apply the parking brake and chock the wheels on a slope.",
+            "Do not tow an EV with its driven wheels on the ground unless the manufacturer allows it; use a flatbed.",
+            "Always tell recovery services that the vehicle is electric."
+          ]
+        }
+      ]
+    },
+    {
+      id: "driver-general",
+      num: "06",
+      title: "General Instructions for Drivers",
+      icon: "ArrowRight",
+      blocks: [
+        { kind: "p", text: "A driver performing work tasks on behalf of the company is an employee within the meaning of the Occupational Health and Safety Act and must additionally comply with the Traffic Act, the Occupational Health and Safety Requirements for Work Involving Physical Hazards, and the requirements of the Road Transport Act regarding working and rest time." },
+        { kind: "h", text: "Before starting the shift:" },
+        { kind: "ul", items: [
+          "The driver must be rested, sober, and in a state of health that allows safe driving. Working under the influence of alcohol, narcotics, or medication that affects reaction time is prohibited.",
+          "The driver must have a valid driving licence for the category of vehicle and, where required, a professional competence certificate (ADR, taxi service card, etc.).",
+          "Carry out a daily pre-trip inspection of the vehicle: tyres and tyre pressure, lights and indicators, windscreen wipers and washer fluid, brakes, steering, mirrors, seat belts, warning triangle, first-aid kit, fire extinguisher, and reflective vest.",
+          "Check that the in-car equipment relevant to the shift (taximeter, fare display, dash camera, passenger-sensor system, payment terminal) is clean, secured, and functioning.",
+          "Report any defect that affects safety to the fleet manager or working environment specialist immediately; do not start the shift with the defect unresolved."
+        ]},
+        { kind: "h", text: "During the shift:" },
+        { kind: "ul", items: [
+          "Wear the seat belt at all times and require passengers to do the same.",
+          "Observe speed limits and adjust speed to road, weather, and traffic conditions; in poor visibility or slippery conditions, reduce speed further.",
+          "Do not hold a phone in the hand while driving. Use a hands-free system and, where possible, accept trips only when the vehicle is stationary.",
+          "Take a rest break of at least 15 minutes after every 2 hours of continuous driving, and a longer break after 4.5 hours.",
+          "Keep the driver's area tidy — loose bottles, bags, and tools can roll under the pedals and cause loss of control.",
+          "When stopping to pick up or drop off a passenger, stop only in a location where stopping is permitted; turn on hazard lights when needed and step out on the kerb side."
+        ]},
+        { kind: "h", text: "End of shift and handover:" },
+        { kind: "ul", items: [
+          "Park the vehicle in the designated location, engage the handbrake, switch off the ignition, and lock the doors.",
+          "Record the mileage and any incidents, near-misses, or faults in the shift log.",
+          "Hand the vehicle over to the next driver or return it to the depot in a clean condition, fuelled/charged to the required level, with all equipment in place."
+        ]}
+      ]
+    },
+    {
+      id: "driver-hazards",
+      num: "07",
+      title: "Driver-Specific Hazards",
+      icon: "Alert",
+      hazards: [
+        {
+          id: "ceiling-sensor", icon: "Alert", title: "Cleaning the ceiling-mounted sensor (main hazard)",
+          items: [
+            "The sensor mounted in the vehicle's ceiling (headlining) must be kept clean for the driver-monitoring and passenger-detection systems to operate correctly. This is the most frequent source of strain and impact injuries for drivers.",
+            "Clean the sensor only when the vehicle is stationary, the ignition is OFF, the handbrake is engaged, and the driver's door is open so you can step out if needed.",
+            "Do not stand or kneel on the driver's seat to reach the sensor — the seat can tilt or slide unexpectedly. Sit sideways in the seat or step out and lean in through the open door.",
+            "Use a dry microfibre cloth. Do not spray cleaner directly onto the ceiling — spray the cloth first. Liquid running into the sensor or the overhead console can cause short-circuits and permanent damage.",
+            "Never use solvents, alcohol wipes above 40%, ammonia-based glass cleaner, or abrasive pads on the sensor lens — they damage the optical coating.",
+            "Keep your head and neck in a neutral position; do not tilt the neck backwards for more than a few seconds at a time. Work in short passes and take breaks.",
+            "Remove watches, rings, and lanyards before reaching up — they can catch on the sun visor, grab handle, or interior light housing.",
+            "If the sensor is damaged, loose, or the warning light stays on after cleaning, report it to the fleet manager. Do not attempt to disassemble or re-seat the sensor yourself."
+          ]
+        },
+        {
+          id: "driver-traffic", icon: "ArrowRight", title: "Traffic and collisions",
+          items: [
+            "Maintain a safe following distance — at least 2 seconds in dry conditions, 4 seconds in rain or snow.",
+            "Watch for cyclists and e-scooters when opening the driver's door; use the \"Dutch reach\" (open with the far hand) where possible.",
+            "At night and in poor visibility, reduce speed and keep the windscreen and headlights clean."
+          ]
+        },
+        {
+          id: "driver-ergonomic", icon: "Heart", title: "Prolonged sitting and back strain",
+          items: [
+            "Adjust the seat, steering wheel, and mirrors before starting the shift so the back is supported and the knees are slightly bent.",
+            "Step out of the vehicle during every break and do a short stretch for the back, neck, and legs.",
+            "Avoid lifting luggage with a twisted back — turn the feet towards the load, bend the knees, and keep the load close to the body."
+          ]
+        },
+        {
+          id: "driver-passenger", icon: "User", title: "Aggressive or intoxicated passengers",
+          items: [
+            "Trust your judgement — you may refuse or end a trip if a passenger behaves aggressively or threatens safety.",
+            "Keep the doors unlocked while driving so you can exit quickly if needed.",
+            "In case of threat, drive to a well-lit public place (petrol station, police station) and call 112. Do not engage in a physical confrontation."
+          ]
+        },
+        {
+          id: "driver-slip", icon: "Dot", title: "Slips when entering/exiting the vehicle",
+          items: [
+            "Use the grab handle when stepping in or out, especially in rain, snow, or icy conditions.",
+            "Step out with the body facing the vehicle and both feet on the ground before standing up.",
+            "Keep the footwells and door sills free of ice, snow, and loose items."
+          ]
+        },
+        {
+          id: "driver-fuel", icon: "Plus", title: "Refuelling and EV charging",
+          items: [
+            "Switch off the ignition and do not smoke or use a phone at the pump or charging station.",
+            "When charging an EV, connect the cable to the vehicle first, then to the charger; reverse the order when disconnecting. Do not use a visibly damaged cable or connector.",
+            "If you smell fuel, see a leak, or the charging cable overheats, stop immediately, move away, and inform the operator of the site."
+          ]
+        }
+      ],
+      postHazards: [
+        { kind: "h", text: "In the event of an accident on the road:" },
+        { kind: "ul", items: [
+          "Secure the scene — turn on hazard lights, put on the reflective vest before stepping out, and place the warning triangle.",
+          "Give first aid to any injured persons and call 112.",
+          "Do not move the vehicles before the police arrive if anyone is injured; in a minor collision without injuries, fill in the European Accident Statement.",
+          "Inform the fleet manager and the working environment specialist as soon as possible."
+        ]}
+      ]
+    },
+    {
+      id: "chemicals",
+      num: "08",
+      title: "Handling Hazardous Chemicals",
+      icon: "Alert",
+      blocks: [
+        { kind: "p", text: "This instruction is mandatory for all employees who come into contact with hazardous chemicals in the course of their duties. Read it before starting work and follow its requirements in your daily work. Following the requirements helps ensure the safety of employees, protect co-workers, and keep the working environment safe." },
+        { kind: "callout", title: "Emergency — call 112", body: "If a chemical is swallowed, gets into the eyes, or any other accident occurs, call the emergency number immediately and, if possible, take the chemical's packaging or label with you. This helps ensure fast and correct first aid and further treatment." },
+        { kind: "h", text: "1 · General requirements" },
+        { kind: "ul", items: [
+          "The employee must know the labelling of hazardous chemicals.",
+          "The employee must know and follow the data on the chemical's safety data sheet (SDS) and be aware of the hazards that may arise from using the chemicals.",
+          "The employee must use personal protective equipment when the chemical's SDS requires it.",
+          "Using an unknown chemical is prohibited."
+        ]},
+        { kind: "h", text: "2 · Rules for preventing chemical accidents" },
+        { kind: "ul", items: [
+          "Keep chemicals preferably in their original packaging, with the packaging tightly closed and intact.",
+          "All chemical containers, including temporary ones, must be labelled with the chemical's name and, for a hazardous chemical, with safety labelling.",
+          "Using a chemical in an unlabelled container is prohibited.",
+          "Keep chemicals away from food and drink. Do not eat or drink while handling them.",
+          "It is prohibited to handle chemicals that do not have a safety data sheet in Estonian.",
+          "Different unknown chemicals must not be mixed together.",
+          "Avoid swallowing chemicals or inhaling vapours; avoid contact with skin or eyes — in case of an accident, wash immediately with plenty of water or use an eye shower.",
+          "If a chemical is swallowed, seek medical help immediately and show the original packaging or label."
+        ]},
+        { kind: "h", text: "Working with chemicals · three stages" },
+        { kind: "stages", items: [
+          { stage: "Stage 1", when: "Before work", lead: "Do not start work until, based on the SDS, you have:", items: [
+            "received instructions from your direct supervisor on which personal protective equipment to use;",
+            "put on the required protective equipment — if it is missing, you must not start work;",
+            "received guidance on the chemical's hazards and on dealing with possible accidents."
+          ]},
+          { stage: "Stage 2", when: "During work", items: [
+            "Wear the required personal protective equipment.",
+            "Follow the data on the chemical's safety data sheet.",
+            "Handle chemicals carefully — do not rush.",
+            "Solutions may be prepared only in the designated containers and only at the permitted concentration.",
+            "Avoid substances getting into the eyes, mouth, or skin, and avoid inhaling vapours.",
+            "Make sure your work does not endanger co-workers or the surroundings."
+          ]},
+          { stage: "Stage 3", when: "After work", items: [
+            "After use, make sure you have closed the packaging properly.",
+            "When treating surfaces, use only the cloths, brushes, etc. intended for the purpose.",
+            "Clean treated surfaces according to the SDS. Treated rooms must be ventilated.",
+            "Clean the items associated with chemical use: containers, cloths, brushes, etc.",
+            "Protective gloves must be washed and dried before they are removed.",
+            "Store chemicals and tools only in the designated place — container, shelf, or room.",
+            "Follow personal hygiene rules precisely."
+          ]}
+        ]},
+        { kind: "h", text: "Hazard pictograms (GHS)" },
+        { kind: "p", text: "The red-framed hazard pictograms on chemical packaging give a quick overview of the chemical's possible hazards. Before working with a chemical, read all the pictograms and warnings on the label and make sure their meaning is clear." },
+        { kind: "ghs", items: [
+          { code: "GHS01", res: "ghs01", url: "https://upload.wikimedia.org/wikipedia/commons/4/4a/GHS-pictogram-explos.svg", name: "Explosive", desc: "Explosive substances, articles, and mixtures." },
+          { code: "GHS02", res: "ghs02", url: "https://upload.wikimedia.org/wikipedia/commons/6/6d/GHS-pictogram-flamme.svg", name: "Flammable", desc: "Flammable gases, liquids, solids, aerosols." },
+          { code: "GHS03", res: "ghs03", url: "https://upload.wikimedia.org/wikipedia/commons/e/e5/GHS-pictogram-rondflam.svg", name: "Oxidising", desc: "Oxidising gases, liquids, and solids." },
+          { code: "GHS04", res: "ghs04", url: "https://upload.wikimedia.org/wikipedia/commons/6/6a/GHS-pictogram-bottle.svg", name: "Gas under pressure", desc: "Gases under pressure — pressurised cylinders." },
+          { code: "GHS05", res: "ghs05", url: "https://upload.wikimedia.org/wikipedia/commons/a/a1/GHS-pictogram-acid.svg", name: "Corrosive", desc: "Corrodes skin, damages eyes and metals." },
+          { code: "GHS06", res: "ghs06", url: "https://upload.wikimedia.org/wikipedia/commons/5/58/GHS-pictogram-skull.svg", name: "Toxic", desc: "Acute toxicity — fatal or seriously harmful." },
+          { code: "GHS07", res: "ghs07", url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg", name: "Irritant · Harmful", desc: "Irritation, skin sensitisation, mild toxicity." },
+          { code: "GHS08", res: "ghs08", url: "https://upload.wikimedia.org/wikipedia/commons/2/21/GHS-pictogram-silhouette.svg", name: "Health hazard", desc: "Carcinogenic, mutagenic, respiratory hazard." },
+          { code: "GHS09", res: "ghs09", url: "https://upload.wikimedia.org/wikipedia/commons/b/b9/GHS-pictogram-pollu.svg", name: "Environmental hazard", desc: "Acute and chronic aquatic toxicity." }
+        ]},
+        { kind: "p", text: "Every GHS pictogram has a red diamond-shaped frame. The label also includes a signal word (\u201cWarning\u201d or \u201cDanger\u201d) and a description of the hazard and precautions. If the packaging has no safety data sheet in Estonian, do not start work." }
+      ]
+    },
+    {
+      id: "first-aid",
+      num: "09",
+      title: "First Aid",
+      icon: "Heart",
+      blocks: [
+        { kind: "p", text: "The purpose of first aid is to save the victim's life at the scene, prevent their condition from deteriorating, and arrange for competent further assistance. First-aid providers are identified next to the first-aid cabinets in the buildings. Remember: the first-aid provider must act calmly and with purpose." },
+        { kind: "callout", title: "Emergency number: 112", body: "(ambulance, police, fire service) — Once vital first aid has been started, call 112!" },
+        { kind: "h", text: "When calling, give the following information clearly and calmly:" },
+        { kind: "ul", items: [
+          "What has happened?",
+          "Where?",
+          "Has anyone been injured?",
+          "Your name and phone number (so you can be called back)."
+        ]},
+        { kind: "p", text: "Answer questions briefly and precisely. Do not end the call yourself." }
+      ]
+    },
+    {
+      id: "reporting",
+      num: "10",
+      title: "Event Reporting",
+      icon: "Alert",
+      blocks: [
+        { kind: "p", text: "If something happens at your workplace, report it. All events related to health, safety, environment, and security must be reported — whether something actually happened or just could have. When in doubt, report it." },
+        { kind: "h", text: "What to do first:" },
+        { kind: "ul", items: [
+          "Stop & secure — cease all tasks related to the event and make the environment safe.",
+          "First aid & emergency services — provide first aid if needed (trained persons only) and call emergency services (112) if required.",
+          "Report the event — complete the Event Notification Form as soon as it is safe to do so.",
+          "Investigation & actions — your leader is automatically assigned an investigation workflow, to be completed within 7 days."
+        ]},
+        { kind: "h", text: "What should I report?" },
+        { kind: "ul", items: [
+          "Incident — something that resulted in injury, illness, environmental harm, or property damage (e.g. a slip and fall, a burn, equipment damage, a chemical spill).",
+          "Near miss — something that could have caused harm but didn't, this time (e.g. almost tripping on a loose cable, a shelf nearly falling).",
+          "Hazard — an unsafe condition that could lead to harm if not addressed (e.g. broken flooring, poor lighting, a blocked emergency exit)."
+        ]},
+        { kind: "p", text: "Questions about event reporting? Reach the Safety team via the Global Employee Health & Safety Service Desk." },
+        { kind: "callout", title: "Report an event now", body: "Scan the QR code to open the Event Notification Form and report an incident, near miss, or hazard." },
+        { kind: "qr", resId: "qrIncident", url: "https://www.cognitoforms.com/Taxify1/eventnotificationform", caption: "Scan to open the Event Notification Form.", label: "Event Notification Form" }
+      ]
+    }
+  ]
+};
+</script>
+<script>// Hazard icons — Kalep-style, currentColor fill, 24x24 viewBox.
+// Inline React components so we don't pull in the full icon set.
+window.HazardIcons = (function(){
+  const mk = (paths, strokePaths = []) => ({ size = 24, style, className } = {}) => {
+    const fills = (Array.isArray(paths) ? paths : [{ d: paths }]).map((p, i) =>
+      React.createElement('path', { key: 'f'+i, fill: 'currentColor', ...p }));
+    const strokes = strokePaths.map((p, i) =>
+      React.createElement('path', { key: 's'+i, stroke: 'currentColor', fill: 'none', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', ...p }));
+    return React.createElement('svg', {
+      width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+      xmlns: 'http://www.w3.org/2000/svg', style, className
+    }, [...fills, ...strokes]);
+  };
+
+  return {
+    // Organisation / settings gear
+    Settings: mk("M12 1c1 0 1.8.7 2 1.7l.3 1.5c.2 1 1 1.7 2 1.7h1.5c1 0 1.9.5 2.4 1.4l.7 1.2c.5.9.3 2-.4 2.7l-1 .9c-.8.7-.8 1.9 0 2.6l1 .9c.7.7.9 1.8.4 2.7l-.7 1.2c-.5.9-1.4 1.4-2.4 1.4H17.3c-1 0-1.8.7-2 1.7l-.3 1.5C14.8 22.3 14 23 13 23h-2c-1 0-1.8-.7-2-1.7l-.3-1.5c-.2-1-1-1.7-2-1.7H5.2c-1 0-1.9-.5-2.4-1.4l-.7-1.2c-.5-.9-.3-2 .4-2.7l1-.9c.8-.7.8-1.9 0-2.6l-1-.9C1.8 8.7 1.6 7.6 2.1 6.7l.7-1.2c.5-.9 1.4-1.4 2.4-1.4h1.5c1 0 1.8-.7 2-1.7l.3-1.5C9.2 1.7 10 1 11 1h1zM12 8a4 4 0 100 8 4 4 0 000-8z"),
+    // Person for employer/employee
+    User: mk([
+      { d: "M12 2a5 5 0 100 10 5 5 0 000-10z" },
+      { d: "M3.5 21c.5-4.2 4.1-7 8.5-7s8 2.8 8.5 7c0 .6-.4 1-1 1H4.5c-.6 0-1-.4-1-1z" }
+    ]),
+    // Check
+    Check: mk("M21.3 5.3c.4.4.4 1 0 1.4l-11 11c-.4.4-1 .4-1.4 0l-6-6a1 1 0 111.4-1.4l5.3 5.3L19.9 5.3a1 1 0 011.4 0z"),
+    // Triangle alert — for hazards
+    Alert: mk("M13.7 3l9 16c.4.7-.1 1.5-.9 1.5H1.2c-.8 0-1.3-.8-.9-1.5l9-16c.4-.7 1.3-.7 1.7 0 .4.2.5.5.7 0zM12 9.5a1 1 0 00-1 1v4.5a1 1 0 002 0v-4.5a1 1 0 00-1-1zm0 7.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"),
+    Heart: mk("M12 20.5S3 14.7 3 8.8A4.8 4.8 0 0112 5.3 4.8 4.8 0 0121 8.8c0 5.9-9 11.7-9 11.7z"),
+    Home: mk("M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1v-9.5z"),
+    Close: mk("M6.7 5.3a1 1 0 00-1.4 1.4L10.6 12l-5.3 5.3a1 1 0 101.4 1.4L12 13.4l5.3 5.3a1 1 0 001.4-1.4L13.4 12l5.3-5.3a1 1 0 00-1.4-1.4L12 10.6 6.7 5.3z"),
+    Check2: mk("M20.3 6.3a1 1 0 010 1.4l-11 11a1 1 0 01-1.4 0l-5-5a1 1 0 111.4-1.4l4.3 4.3L18.9 6.3a1 1 0 011.4 0z"),
+
+    // HAZARD ICONS ─────────────────────
+    // Falling object — box with arrow down (simplified)
+    FallingObject: mk([
+      { d: "M9 2h6a1 1 0 011 1v4a1 1 0 01-1 1H9a1 1 0 01-1-1V3a1 1 0 011-1z" }
+    ], [
+      { d: "M12 11v9M8 17l4 4 4-4" }
+    ]),
+    // Ladder
+    Ladder: mk([], [
+      { d: "M7 2v20M17 2v20M7 6h10M7 10h10M7 14h10M7 18h10" }
+    ]),
+    // Fall from height — person + arrow down
+    FallHeight: mk([
+      { d: "M14 4a2 2 0 11-4 0 2 2 0 014 0z" }
+    ], [
+      { d: "M12 7v6l-3 4M12 13l3 4M5 21h14" }
+    ]),
+    // Crushing — two arrows converging
+    Crush: mk([], [
+      { d: "M3 12h7M21 12h-7M6 9l-3 3 3 3M18 9l3 3-3 3M10 5v14M14 5v14" }
+    ]),
+    // Electric — lightning bolt
+    Electric: mk("M13 2L4 14h6l-1 8 9-12h-6l1-8z"),
+    // Trip — stairs
+    Trip: mk([], [
+      { d: "M3 20h4v-4h4v-4h4V8h4V4h2" }
+    ]),
+    // Slip — wavy lines
+    Slip: mk([], [
+      { d: "M3 8c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 14c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 20c3 0 3-2 6-2s3 2 6 2 3-2 6-2" }
+    ]),
+    // Back strain — person bent
+    Back: mk([
+      { d: "M10 3a2 2 0 114 0 2 2 0 01-4 0z" }
+    ], [
+      { d: "M12 6c-1 3-3 5-5 6M12 6c2 4 5 5 7 6M7 12l-2 9M19 12l1 9M10 12l1 4-3 5M14 12l-1 4 3 5" }
+    ]),
+    // Impact — exclamation burst
+    Impact: mk([
+      { d: "M12 2l2 5 5-1-3 4 4 3-5 1 1 5-4-3-3 4-1-5-5 1 3-4-4-3 5-1-1-5 4 3 2-5z" }
+    ]),
+    // Cut — scissors-like / knife
+    Cut: mk([], [
+      { d: "M3 21L21 3M14 10l-4 4M8 18a2 2 0 11-4 0 2 2 0 014 0zM20 6a2 2 0 11-4 0 2 2 0 014 0z" }
+    ]),
+
+    // Misc
+    Phone: mk("M20.5 15.5l-3.2-1.3a1 1 0 00-1.1.2l-1.6 1.6a11 11 0 01-4.6-4.6l1.6-1.6a1 1 0 00.2-1.1L10.5 5.5a1 1 0 00-1.2-.6L5 6c-.5.1-.9.6-.9 1.2C4.6 15.5 8.5 19.4 16.8 19.9c.6 0 1.1-.4 1.2-.9l1.1-4.3a1 1 0 00-.6-1.2z"),
+    ChevronRight: mk([], [{d:"M9 5l7 7-7 7"}]),
+    ChevronDown: mk("M5 9l7 7 7-7", []),
+    ArrowRight: mk([], [{d:"M5 12h14M13 5l7 7-7 7"}]),
+    Dot: mk("M12 8a4 4 0 100 8 4 4 0 000-8z"),
+    Plus: mk([], [{d:"M12 5v14M5 12h14"}]),
+    Document: mk([
+      { d: "M6 2h8l6 6v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" }
+    ], [
+      { d: "M14 2v6h6" }
+    ]),
+    Shield: mk("M12 2l8 3v7c0 4.5-3.3 8.5-8 10-4.7-1.5-8-5.5-8-10V5l8-3z"),
+    Book: mk("M4 4.5A2.5 2.5 0 016.5 2H20v16H6.5A2.5 2.5 0 004 20.5v-16zM4 20.5A2.5 2.5 0 006.5 23H20v-5H6.5A2.5 2.5 0 004 20.5z"),
+    Stop: mk("M8.6 2h6.8L21 7.6v8.8L15.4 22H8.6L3 16.4V7.6L8.6 2z"),
+    Hash: mk("M10 3L8 21M16 3l-2 18M3 8h18M3 16h18"),
+  };
+})();
+</script>
+<script>// Variation A — Document
+// Print-forward, two-column: sticky TOC sidebar + long-form document pane.
+// Kalep-first: sage neutrals, green accents, Inter, sentence case, no emoji.
+
+const {
+  useState,
+  useEffect,
+  useRef
+} = React;
+const I = window.HazardIcons;
+const HAZ_ICON = {
+  "falling-objects": I.FallingObject,
+  "ladders": I.Ladder,
+  "falling-height": I.FallHeight,
+  "crushing": I.Crush,
+  "electric": I.Electric,
+  "tripping": I.Trip,
+  "slipping": I.Slip,
+  "back": I.Back,
+  "impact": I.Impact,
+  "cut": I.Cut,
+  "ev-hv": I.Electric,
+  "ev-charging": I.Plus,
+  "ev-fire": I.Alert,
+  "ev-silent": I.Dot,
+  "ev-regen": I.ArrowRight,
+  "ev-towing": I.Stop
+};
+function BoltLogo({
+  height = 20,
+  color = "#2A9C64"
+}) {
+  return /*#__PURE__*/React.createElement("svg", {
+    height: height,
+    viewBox: "0 0 89 52",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    style: {
+      display: 'block'
+    }
+  }, /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#boltlogo_clip)"
+  }, /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M71.5344 39.1003H62.2879V1.96605L71.5344 0.0200617V39.1003ZM45.2252 29.912C47.7836 29.912 49.8384 27.8657 49.8384 25.338V25.3179C49.8384 22.7901 47.7836 20.7238 45.2252 20.7238C42.6668 20.7238 40.612 22.7701 40.612 25.3179C40.612 27.8657 42.6668 29.912 45.2252 29.912ZM45.2252 11.1343C53.1019 11.1343 59.4676 17.4738 59.4676 25.338C59.4676 33.162 53.0817 39.5216 45.2051 39.5216C37.3284 39.5216 30.9627 33.142 30.9627 25.3179C30.9627 17.4938 37.3486 11.1343 45.2252 11.1343ZM45.2252 42.8117C42.6668 42.8117 40.612 44.8781 40.612 47.4059C40.612 49.9336 42.6668 52 45.2252 52C47.7836 52 49.8384 49.9537 49.8384 47.4059C49.8384 44.858 47.7836 42.8117 45.2252 42.8117ZM16.1763 29.912H16.3375C17.9289 29.8719 19.1779 28.5478 19.1376 26.963C19.0973 25.3781 17.7678 24.1343 16.1763 24.1744H9.24649V29.912H16.1763ZM9.24649 9.20833V14.946H14.3834C15.9749 14.946 17.2641 13.662 17.2641 12.0772C17.2641 10.4923 15.9749 9.20833 14.3834 9.20833H9.24649ZM24.6775 18.4367C26.974 20.7037 28.2632 23.7932 28.2632 26.983C28.2834 33.6636 22.8443 39.0802 16.1562 39.0802H0V0H14.3633C16.6195 0 18.8153 0.621914 20.7291 1.80556C26.4301 5.31636 28.2028 12.7593 24.6775 18.4367ZM88.9799 20.8441V11.6358H84.3465V4.6142L75.1202 6.56018V30.3534C75.1202 35.9707 78.6254 39.2006 83.7825 39.4614C83.8228 39.4614 83.9034 39.4815 83.9436 39.4815H84.0242C84.1451 39.4815 84.2458 39.5015 84.3667 39.5015H84.4875C86.0588 39.5015 87.61 39.1003 89 38.358V31.5772C88.3352 31.7577 87.6301 31.858 86.9452 31.838C85.0919 31.838 84.3868 30.233 84.3868 28.0463V20.8241L88.9799 20.8441Z",
+    fill: color
+  })), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "boltlogo_clip"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: "89",
+    height: "52",
+    fill: "white"
+  }))));
+}
+function SectionIcon({
+  name,
+  size = 20
+}) {
+  const Icon = I[name] || I.Document;
+  return /*#__PURE__*/React.createElement(Icon, {
+    size: size
+  });
+}
+function Block({
+  b
+}) {
+  if (b.kind === 'p') return /*#__PURE__*/React.createElement("p", {
+    className: "docA-p"
+  }, b.text);
+  if (b.kind === 'h') return /*#__PURE__*/React.createElement("div", {
+    className: "docA-h"
+  }, b.text);
+  if (b.kind === 'ul') return /*#__PURE__*/React.createElement("ul", {
+    className: "docA-ul"
+  }, b.items.map((it, i) => /*#__PURE__*/React.createElement("li", {
+    key: i
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "docA-bullet"
+  }), /*#__PURE__*/React.createElement("span", null, it))));
+  if (b.kind === 'callout') return /*#__PURE__*/React.createElement("div", {
+    className: "docA-callout"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-callout-icon"
+  }, /*#__PURE__*/React.createElement(I.Phone, {
+    size: 22
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "docA-callout-title"
+  }, b.title), /*#__PURE__*/React.createElement("div", {
+    className: "docA-callout-body"
+  }, b.body)));
+  if (b.kind === 'qr') {
+    const liveUrl = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=" + encodeURIComponent(b.url);
+    const src = typeof window !== 'undefined' && window.__resources && b.resId && window.__resources[b.resId] || liveUrl;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "docA-qr"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "docA-qr-img"
+    }, /*#__PURE__*/React.createElement("img", {
+      src: src,
+      alt: "QR code",
+      width: "120",
+      height: "120"
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "docA-qr-body"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "docA-qr-label"
+    }, b.label || "Linked procedure"), /*#__PURE__*/React.createElement("div", {
+      className: "docA-qr-caption"
+    }, b.caption), /*#__PURE__*/React.createElement("a", {
+      className: "docA-qr-link",
+      href: b.url,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, b.url)));
+  }
+  if (b.kind === 'stages') return /*#__PURE__*/React.createElement("div", {
+    className: "docA-stages"
+  }, b.items.map((s, i) => /*#__PURE__*/React.createElement("div", {
+    className: "docA-stage",
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-stage-head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "docA-stage-num"
+  }, s.stage), /*#__PURE__*/React.createElement("span", {
+    className: "docA-stage-when"
+  }, s.when)), /*#__PURE__*/React.createElement("div", {
+    className: "docA-stage-body"
+  }, s.lead && /*#__PURE__*/React.createElement("div", {
+    className: "docA-stage-lead"
+  }, s.lead), /*#__PURE__*/React.createElement("ul", {
+    className: "docA-ul docA-ul-tight"
+  }, s.items.map((it, j) => /*#__PURE__*/React.createElement("li", {
+    key: j
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "docA-bullet"
+  }), /*#__PURE__*/React.createElement("span", null, it))))))));
+  if (b.kind === 'ghs') return /*#__PURE__*/React.createElement("div", {
+    className: "docA-ghs"
+  }, b.items.map((g, i) => {
+    const src = typeof window !== 'undefined' && window.__resources && g.res && window.__resources[g.res] || g.url;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "docA-ghs-item",
+      key: i
+    }, /*#__PURE__*/React.createElement("img", {
+      className: "docA-ghs-pic",
+      src: src,
+      alt: g.code,
+      width: "72",
+      height: "72"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "docA-ghs-code"
+    }, g.code), /*#__PURE__*/React.createElement("div", {
+      className: "docA-ghs-name"
+    }, g.name), /*#__PURE__*/React.createElement("div", {
+      className: "docA-ghs-desc"
+    }, g.desc));
+  }));
+  return null;
+}
+function HazardCard({
+  h
+}) {
+  const Icon = HAZ_ICON[h.id] || I.Alert;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "docA-hazard"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-hazard-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-hazard-icon"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    size: 22
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "docA-hazard-title"
+  }, h.title)), /*#__PURE__*/React.createElement("ul", {
+    className: "docA-ul docA-ul-tight"
+  }, h.items.map((it, i) => /*#__PURE__*/React.createElement("li", {
+    key: i
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "docA-bullet"
+  }), /*#__PURE__*/React.createElement("span", null, it)))));
+}
+function VariationA() {
+  const C = window.SAFETY_CONTENT;
+  const [active, setActive] = useState(C.sections[0].id);
+  const refs = useRef({});
+  useEffect(() => {
+    const onScroll = () => {
+      const root = document.querySelector('.docA-scroll');
+      if (!root) return;
+      const top = root.scrollTop + 120;
+      let cur = C.sections[0].id;
+      for (const s of C.sections) {
+        const el = refs.current[s.id];
+        if (el && el.offsetTop <= top) cur = s.id;
+      }
+      setActive(cur);
+    };
+    const root = document.querySelector('.docA-scroll');
+    root?.addEventListener('scroll', onScroll);
+    return () => root?.removeEventListener('scroll', onScroll);
+  }, []);
+  const go = id => {
+    const root = document.querySelector('.docA-scroll');
+    const el = refs.current[id];
+    if (root && el) root.scrollTo({
+      top: el.offsetTop - 24,
+      behavior: 'smooth'
+    });
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "docA-root bolt-font-base"
+  }, /*#__PURE__*/React.createElement("aside", {
+    className: "docA-toc"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-toc-brand"
+  }, /*#__PURE__*/React.createElement(BoltLogo, {
+    height: 20
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "docA-toc-brand-tag"
+  }, "Safety")), /*#__PURE__*/React.createElement("div", {
+    className: "docA-toc-label"
+  }, "Contents"), /*#__PURE__*/React.createElement("nav", {
+    className: "docA-toc-nav"
+  }, C.sections.map(s => /*#__PURE__*/React.createElement("button", {
+    key: s.id,
+    onClick: () => go(s.id),
+    className: "docA-toc-item" + (active === s.id ? " is-active" : "")
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "docA-toc-num"
+  }, s.num), /*#__PURE__*/React.createElement("span", {
+    className: "docA-toc-t"
+  }, s.title)))), /*#__PURE__*/React.createElement("div", {
+    className: "docA-toc-foot"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-toc-meta"
+  }, "Document \xB7 v1.0"), /*#__PURE__*/React.createElement("div", {
+    className: "docA-toc-meta"
+  }, "Issued April 2026"))), /*#__PURE__*/React.createElement("main", {
+    className: "docA-scroll"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-inner"
+  }, /*#__PURE__*/React.createElement("header", {
+    className: "docA-cover"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-eyebrow"
+  }, "Introductory Safety Briefing"), /*#__PURE__*/React.createElement("h1", {
+    className: "docA-title"
+  }, "Workplace", /*#__PURE__*/React.createElement("br", null), "Safety Guidelines")), C.sections.map(s => /*#__PURE__*/React.createElement("section", {
+    key: s.id,
+    id: s.id,
+    ref: el => refs.current[s.id] = el,
+    className: "docA-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-sec-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-sec-num"
+  }, s.num), /*#__PURE__*/React.createElement("div", {
+    className: "docA-sec-icon"
+  }, /*#__PURE__*/React.createElement(SectionIcon, {
+    name: s.icon,
+    size: 22
+  })), /*#__PURE__*/React.createElement("h2", {
+    className: "docA-sec-title"
+  }, s.title)), s.blocks && s.blocks.map((b, i) => /*#__PURE__*/React.createElement(Block, {
+    key: i,
+    b: b
+  })), s.hazards && /*#__PURE__*/React.createElement("div", {
+    className: "docA-hazards"
+  }, s.hazards.map(h => /*#__PURE__*/React.createElement(HazardCard, {
+    key: h.id,
+    h: h
+  }))), s.postHazards && s.postHazards.map((b, i) => /*#__PURE__*/React.createElement(Block, {
+    key: "p" + i,
+    b: b
+  })))), /*#__PURE__*/React.createElement("footer", {
+    className: "docA-foot"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-foot-rule"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "docA-foot-grid"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "docA-foot-label"
+  }, "End of document"), /*#__PURE__*/React.createElement("div", {
+    className: "docA-foot-body"
+  }, "I have read and understood the Workplace Safety Guidelines.")), /*#__PURE__*/React.createElement("div", {
+    className: "docA-sign"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "docA-sign-line"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "docA-foot-label"
+  }, "Signature \xB7 Date")))))));
+}
+window.VariationA = VariationA;</script>
+<script>
+(function(){
+  function mount(){
+    if(!(window.React&&window.ReactDOM&&window.VariationA)){return setTimeout(mount,40);}
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(window.VariationA));
+  }
+  mount();
+})();
+</script>
+</body>
+</html>
